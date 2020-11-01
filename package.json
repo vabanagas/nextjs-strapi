@@ -1,0 +1,34 @@
+{
+  "name": "nextjs-strapi",
+  "private": "true",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "develop": "lerna run --parallel develop",
+    "start": "lerna run --parallel start",
+    "build": "lerna run build",
+    "build:nextjs": "lerna run --scope nextjs build",
+    "build:strapi-cms": "lerna run --scope strapi-cms build",
+    "lint": "lerna run lint"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-lerna-scopes",
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "@commitlint/config-lerna-scopes": "^9.1.2",
+    "husky": "^4.3.0",
+    "lerna": "3.22.1"
+  }
+}
